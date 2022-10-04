@@ -1,8 +1,17 @@
+from inspect import getargs
 from xml.etree.ElementInclude import include
 import scrapy
 
+# Quick and dirty way to grab an attr from a DOM element
+def getAttr(element, attr):
+    return element.split(attr + "=")[1].split(" ")[0]
+
+# Because these lazy programmers didn't include proper classing in their HTML, we have to do some gross parsing
 def parsedUrl(dataRow, index=1):
-    return "https://en.uesp.net" + dataRow.css('a').getall()[index].split(" ")[1].split("=")[1].replace('"', '')
+    link = dataRow.css('a').getall()[index]
+    url = getAttr(link, "href").replace('"', '')
+
+    return "https://en.uesp.net" + url
 
 # I really don't know how this works, but it returns a list of tuples from a list
 def pairwise(iterable):
