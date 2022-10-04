@@ -13,7 +13,7 @@ def parsedUrl(dataRow, index=1):
 
     return "https://en.uesp.net" + url
 
-# I really don't know how this works, but it returns a list of tuples from a list
+# I really don't know how this works, but it returns a list of length-2 arrays from a list
 def pairwise(iterable):
     a = iter(iterable)
     return zip(a, a)
