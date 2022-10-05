@@ -35,8 +35,8 @@ class LinkSpider(scrapy.Spider):
                 # "effect3_name": effect_names[2],
                 # "effect4_name": effect_names[3],
 
-                "effect1_url": parsedUrl(row2, 1),
-                "effect2_url": parsedUrl(row2, 2),
-                "effect3_url": parsedUrl(row2, 3),
-                "effect4_url": parsedUrl(row2, 4)
+                # "effect1_url": parsedUrl(row2, 1),
+                # "effect2_url": parsedUrl(row2, 2),
+                # "effect3_url": parsedUrl(row2, 3),
+                # "effect4_url": parsedUrl(row2, 4)
             }

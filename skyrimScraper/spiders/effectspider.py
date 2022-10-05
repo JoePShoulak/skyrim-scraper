@@ -1,7 +1,7 @@
 import scrapy
 
 class EffectSpider(scrapy.Spider):
-    name = 'effect'
+    name = 'effects'
     start_urls = ['https://en.uesp.net/wiki/Skyrim:Alchemy_Effects']
 
     def parse(self, response):

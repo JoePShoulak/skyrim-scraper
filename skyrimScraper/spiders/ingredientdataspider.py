@@ -38,7 +38,7 @@ def parsedUrl(dataRow, index=1):
     return "https://en.uesp.net" + url
 
 class IngredientDataSpider(scrapy.Spider):
-    name = 'ingredient_data'
+    name = 'ingredients'
     start_urls = getIngredientURLS()
 
     def parse(self, response):
