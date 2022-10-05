@@ -20,7 +20,7 @@ class EffectSpider(scrapy.Spider):
                 yield {
                     "name": name,
                     "id": id,
-                    "base_cost": data[0][4:-5],
-                    "base_mag": data[1][4:-5],
-                    "base_dur": data[2][4:-5]
+                    "base_cost": data[0].split(">")[1].split("<")[0],
+                    "base_mag": data[1].split(">")[1].split("<")[0],
+                    "base_dur": data[2].split(">")[1].split("<")[0]
                 }
