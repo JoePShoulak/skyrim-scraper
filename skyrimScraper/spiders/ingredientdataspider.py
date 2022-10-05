@@ -28,7 +28,7 @@ class IngredientDataSpider(scrapy.Spider):
             # TODO: Grab Icon URLs
 
             "name": table.css('a').attrib['title'],
-            "id": id,
+            "id": id.upper(),
             "value": data[0],
             "weight": data[1],
 
