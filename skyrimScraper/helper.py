@@ -34,3 +34,6 @@ def parsedUrl(dataRow, index=1):
 def pairwise(iterable):
     a = iter(iterable)
     return zip(a, a)
+
+def textFromElement(element):
+    return element.split(">")[1].split("<")[0]

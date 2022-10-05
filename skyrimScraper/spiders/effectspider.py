@@ -1,5 +1,7 @@
 import scrapy
 
+from ..helper import textFromElement
+
 class EffectSpider(scrapy.Spider):
     name = 'effects'
     start_urls = ['https://en.uesp.net/wiki/Skyrim:Alchemy_Effects']
@@ -20,7 +22,7 @@ class EffectSpider(scrapy.Spider):
                 yield {
                     "name": name,
                     "id": id,
-                    "base_cost": data[0].split(">")[1].split("<")[0],
-                    "base_mag": data[1].split(">")[1].split("<")[0],
-                    "base_dur": data[2].split(">")[1].split("<")[0]
+                    "base_cost": textFromElement(data[0]),
+                    "base_mag": textFromElement(data[1]),
+                    "base_dur": textFromElement(data[2])
                 }
