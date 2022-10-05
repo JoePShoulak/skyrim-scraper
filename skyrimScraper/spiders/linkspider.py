@@ -18,8 +18,8 @@ def pairwise(iterable):
     a = iter(iterable)
     return zip(a, a)
 
-class IngredientSpider(scrapy.Spider):
-    name = 'ingredients'
+class LinkSpider(scrapy.Spider):
+    name = 'links'
     start_urls = ['https://en.uesp.net/wiki/Skyrim:Ingredients']
 
     def parse(self, response):
@@ -32,10 +32,10 @@ class IngredientSpider(scrapy.Spider):
                 "name": row1.css('a::text').get(),
                 "url": parsedUrl(row1),
 
-                "effect1_name": effect_names[0],
-                "effect2_name": effect_names[1],
-                "effect3_name": effect_names[2],
-                "effect4_name": effect_names[3],
+                # "effect1_name": effect_names[0],
+                # "effect2_name": effect_names[1],
+                # "effect3_name": effect_names[2],
+                # "effect4_name": effect_names[3],
 
                 "effect1_url": parsedUrl(row2, 1),
                 "effect2_url": parsedUrl(row2, 2),

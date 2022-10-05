@@ -1,21 +1,27 @@
-from operator import truediv
-import scrapy, json, os
+import scrapy, json
 
+# lol
+def bigPrint(string):
+    print()
+    print(string)
+    print()
+
+# Grab the URLs we already stored using out linkSpider
 def getIngredientURLS():
-    f = open('data.json')
+    f = open('link_data.json')
     data = json.load(f)
 
     urls = list(map(lambda x: x['url'], data))
 
     return urls
 
+# Make sure the link we're looking at is an effect link (by eliminiation)
 def checkEffectLink(link):
-    if ".png" in link or "Form_ID" in link:
-        return False
-    if "Hearthfire" in link or "Dawnguard" in link or "Dragonborn" in link:
-        return False
-    if "Alchemy" in link:
-        return False
+    badContent = [".png", "Form_ID", "Hearthfire", "Dawnguard", "Dragonborn", "Alchemy"]
+
+    for thing in badContent:
+        if thing in link:
+            return False
 
     return True
 
@@ -38,14 +44,12 @@ class IngredientDataSpider(scrapy.Spider):
     def parse(self, response):
         table = response.css('.infobox')
 
-        data = table.css('td::text').getall()
+        id = "".join(table.css(".idall span::text").getall())
 
+        data = table.css('td::text').getall()
         effects = table.css('a::text').getall()
 
         links = table.css('a')
-
-        # print(links)
-
         parsedlinks = []
 
         for i in range(len(links)):
@@ -57,6 +61,7 @@ class IngredientDataSpider(scrapy.Spider):
 
         yield {
             "name": table.css('a').attrib['title'],
+            "id": id,
             "value": data[0],
             "weight": data[1],
 
