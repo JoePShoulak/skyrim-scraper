@@ -1,4 +1,4 @@
-import scrapy, json
+import scrapy
 
 from ..helper import getIngredientURLS, parsedUrl, checkEffectLink
 
@@ -26,6 +26,7 @@ class IngredientDataSpider(scrapy.Spider):
 
         yield {
             # TODO: Grab Icon URLs
+            # TODO: Grab modifier values (magnitude, duration, value) per effect
 
             "name": table.css('a').attrib['title'],
             "id": id.upper(),
