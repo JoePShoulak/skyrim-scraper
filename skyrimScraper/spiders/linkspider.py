@@ -1,5 +1,3 @@
-from inspect import getargs
-from xml.etree.ElementInclude import include
 import scrapy
 
 # Quick and dirty way to grab an attr from a DOM element
