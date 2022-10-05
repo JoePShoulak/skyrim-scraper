@@ -25,6 +25,8 @@ class IngredientDataSpider(scrapy.Spider):
         effects = effects[1:5]
 
         yield {
+            # TODO: Grab Icon URLs
+
             "name": table.css('a').attrib['title'],
             "id": id,
             "value": data[0],
